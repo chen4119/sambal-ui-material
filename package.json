@@ -1,0 +1,47 @@
+{
+    "name": "sambal-ui-material",
+    "version": "0.0.1",
+    "description": "Material ui theme for Sambal",
+    "main": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/chen4119/sambal-ui-material.git"
+    },
+    "author": "Wan Chun Chen",
+    "license": "MIT",
+    "keywords": [
+        "schema.org",
+        "semantic web",
+        "json-ld",
+        "linked data",
+        "static site generator",
+        "sambal"
+    ],
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "scripts": {
+        "start": "ts-node src/cli.ts build",
+        "test": "jest",
+        "test:coverage": "jest --coverage",
+        "build": "npm run clean && tsc",
+        "clean": "rimraf ./dist",
+        "serve": "ts-node src/cli.ts serve",
+        "collection": "ts-node src/cli.ts collection"
+    },
+    "dependencies": {
+        "@material-ui/core": "4.11.3",
+        "@material-ui/icons": "4.11.2",
+        "@material-ui/styles": "4.11.3",
+        "markdown-to-jsx": "7.1.2",
+        "prismjs": "1.23.0",
+        "react": "17.0.1",
+        "react-dom": "17.0.1"
+    },
+    "devDependencies": {
+        "babel-jest": "26.6.3",
+        "eslint": "7.21.0",
+        "jest": "25.5.4",
+        "rimraf": "3.0.0"
+    }
+}
