@@ -21,15 +21,22 @@
         "node": ">=10.0.0"
     },
     "scripts": {
-        "start": "ts-node src/cli.ts build",
+        "start": "node src/index.js",
         "test": "jest",
         "test:coverage": "jest --coverage",
-        "build": "npm run clean && tsc",
         "clean": "rimraf ./dist",
-        "serve": "ts-node src/cli.ts serve",
-        "collection": "ts-node src/cli.ts collection"
+        "publish": "npm run clean && node src/index.js"
     },
     "dependencies": {
+        "@babel/core": "7.13.8",
+        "@babel/plugin-transform-runtime": "7.13.9",
+        "@babel/preset-env": "7.13.9",
+        "@babel/preset-react": "7.12.13",
+        "babel-loader": "8.2.2",
+        "css-loader": "5.1.1",
+        "style-loader": "2.0.0",
+        "webpack": "5.24.3",
+        "webpack-node-externals": "2.5.2",
         "@material-ui/core": "4.11.3",
         "@material-ui/icons": "4.11.2",
         "@material-ui/styles": "4.11.3",
