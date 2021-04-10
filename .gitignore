@@ -104,3 +104,7 @@ dist
 .tern-port
 
 package-lock.json
+content/
+public/
+.sambal/
+sambal.site.js

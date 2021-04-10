@@ -1,15 +1,20 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import Markdown from "./Markdown";
+import { DateTime } from "luxon";
 
 const BlogPost = ({ mainEntity }) => {
     return (
         <div>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-              {mainEntity.headline}
+            <Typography component="h1" variant="h4" color="inherit">
+                {mainEntity.headline}
             </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {mainEntity.alternativeHeadline}
+            <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+                {DateTime.fromJSDate(mainEntity.dateCreated).toLocaleString(DateTime.DATE_MED)}
             </Typography>
+            <Markdown>
+                {mainEntity.text}
+            </Markdown>
         </div>
     );
 }
