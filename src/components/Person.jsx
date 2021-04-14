@@ -14,19 +14,17 @@ const useStyles = makeStyles((theme) => ({
 const Person = ({ mainEntity }) => {
     const classes = useStyles();
     return (
-        <div>
-            <Container maxWidth="sm" className={classes.container}>
-                <Typography align="center" component="h1" variant="h3" color="inherit" gutterBottom>
-                    {mainEntity.name}
-                </Typography>
-                <Typography align="center" variant="h5" color="inherit" paragraph>
-                    {mainEntity.description}
-                </Typography>
-                <IconButton>
-                    <LinkedInIcon fontSize="large"/>
-                </IconButton>
-            </Container>
-        </div>
+        <Container maxWidth="sm" className={classes.container}>
+            <Typography align="center" component="h1" variant="h3" color="inherit" gutterBottom>
+                {mainEntity.name}
+            </Typography>
+            <Typography align="center" variant="h5" color="inherit" paragraph>
+                {mainEntity.description}
+            </Typography>
+            <IconButton>
+                <LinkedInIcon fontSize="large"/>
+            </IconButton>
+        </Container>
     );
 }
 

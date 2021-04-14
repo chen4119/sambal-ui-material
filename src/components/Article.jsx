@@ -6,17 +6,12 @@ import Chip from "@material-ui/core/Chip";
 import { DateTime } from "luxon";
 
 const useStyles = makeStyles((theme) => ({
-    chip: {
-        marginTop: 5,
-        marginBottom: 5,
-        marginRight: 5
-    },
     content: {
         marginTop: 20
     }
 }));
 
-const BlogPost = ({ mainEntity }) => {
+const Article = ({ mainEntity }) => {
     const classes = useStyles();
     return (
         <div>
@@ -24,14 +19,8 @@ const BlogPost = ({ mainEntity }) => {
                 {mainEntity.headline}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-                {DateTime.fromJSDate(mainEntity.dateCreated).toLocaleString(DateTime.DATE_MED)}
+                {mainEntity.alternativeHeadline}
             </Typography>
-            {mainEntity.keywords &&
-                <div>
-                    {mainEntity.keywords.map(tag => (
-                        <Chip className={classes.chip} label={tag} />
-                    ))}
-                </div>}
             <Markdown className={classes.content}>
                 {mainEntity.text}
             </Markdown>
@@ -39,4 +28,4 @@ const BlogPost = ({ mainEntity }) => {
     );
 }
 
-export default BlogPost;
+export default Article;

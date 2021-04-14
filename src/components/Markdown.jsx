@@ -6,9 +6,9 @@ import Link from "@material-ui/core/Link";
 
 const styles = (theme) => ({
     listItem: {
-      marginTop: theme.spacing(1),
+        marginTop: theme.spacing(1),
     },
-  });
+});
 
 const options = {
     overrides: {
@@ -44,6 +44,7 @@ const options = {
         p: {
             component: Typography,
             props: {
+                variant: "body1",
                 paragraph: true
             },
         },
