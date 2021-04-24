@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import { getEntitiesByType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = ({ url, header }) => {
     const classes = useStyles();
-    const nav = header.hasPart ? header.hasPart.filter(d => d["@type"].toLowerCase() === "sitenavigationelement") : [];
+    const nav = header.hasPart ? getEntitiesByType(header.hasPart, "sitenavigationelement") : [];
     return (
         <Fragment>
             <Toolbar className={classes.toolbar}>

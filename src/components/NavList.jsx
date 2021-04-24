@@ -4,6 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Link from "@material-ui/core/Link";
+import { isSchemaType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,7 +18,7 @@ const NavList = ({ url, mainEntity }) => {
     let navList = [];
     if (Array.isArray(mainEntity)) {
         navList = mainEntity;
-    } else if (mainEntity["@type"].toLowerCase() === "itemlist") {
+    } else if (isSchemaType(mainEntity, "itemlist", false)) {
         name = mainEntity.name;
         navList = mainEntity.itemListElement;
     }

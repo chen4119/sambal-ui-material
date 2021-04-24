@@ -4,6 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./Header";
 import NavList from "./NavList";
+import { getEntityByType } from "sambal";
 
 const sideBarWidth = 240;
 
@@ -52,8 +53,8 @@ const SideBarLayout = ({ url, sidebar, children }) => {
 
 const Layout = ({ page, children }) => {
     const classes = useStyles();
-    const header = page.hasPart ? page.hasPart.find(d => d["@type"].toLowerCase() === "wpheader") : null;
-    const sidebar = page.hasPart ? page.hasPart.find(d => d["@type"].toLowerCase() === "wpsidebar") : null;
+    const header = page.hasPart ? getEntityByType(page.hasPart, "wpheader") : null;
+    const sidebar = page.hasPart ? getEntityByType(page.hasPart, "wpsidebar") : null;
     return (
         <Fragment>
             <CssBaseline />
