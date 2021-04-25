@@ -1,14 +1,12 @@
 import React from "react";
 import BlogSummary from "./BlogSummary";
+import { isSchemaType } from "sambal";
 
 const Summary = ({ mainEntity }) => {
-    const mainEntityType = mainEntity["@type"].toLowerCase();
-    switch(mainEntityType) {
-        case "blogposting":
-            return <BlogSummary mainEntity={mainEntity} />;
-        default:
-            return null;
+    if (isSchemaType(mainEntity, "article")) {
+        return <BlogSummary mainEntity={mainEntity} />;
     }
+    return null;
 }
 
 export default Summary;

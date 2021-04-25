@@ -1,9 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import BlogPost from "./BlogPost";
 import Person from "./Person";
 import Landing from "./Landing";
 import EntityList from "./EntityList";
 import Article from "./Article";
+import { isSchemaType } from "sambal";
 
 const MainContent = ({ mainEntity, isLanding = false }) => {
     if (isLanding) {
@@ -11,21 +12,17 @@ const MainContent = ({ mainEntity, isLanding = false }) => {
             <Landing mainEntity={mainEntity} />
         );
     }
-    const mainEntityType = mainEntity["@type"].toLowerCase();
-    switch(mainEntityType) {
-        case "itemlist":
-        case "listitem":
-            return <EntityList mainEntity={mainEntity} />;
-        case "techarticle":
-        case "apireference":
-            return <Article mainEntity={mainEntity} />;
-        case "blogposting":
-            return <BlogPost mainEntity={mainEntity} />;
-        case "person":
-            return <Person mainEntity={mainEntity} />;
-        default:
-            return null;
+    if (isSchemaType(mainEntity, "blogposting", false)) {
+        return <BlogPost mainEntity={mainEntity} />;
+    } else if (isSchemaType(mainEntity, "article")) {
+        return <Article mainEntity={mainEntity} />;
+    } else if (isSchemaType(mainEntity, "person")) {
+        return <Person mainEntity={mainEntity} />;
+    } else if (isSchemaType(mainEntity, "itemlist", false) || 
+        isSchemaType(mainEntity, "listitem", false)) {
+        return <EntityList mainEntity={mainEntity} />;
     }
+    return null;
 }
 
 export default MainContent;

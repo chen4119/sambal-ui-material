@@ -53,8 +53,8 @@ const SideBarLayout = ({ url, sidebar, children }) => {
 
 const Layout = ({ page, children }) => {
     const classes = useStyles();
-    const header = page.hasPart ? getEntityByType(page.hasPart, "wpheader") : null;
-    const sidebar = page.hasPart ? getEntityByType(page.hasPart, "wpsidebar") : null;
+    const header = getEntityByType(page.hasPart, "wpheader");
+    const sidebar = getEntityByType(page.hasPart, "wpsidebar");
     return (
         <Fragment>
             <CssBaseline />

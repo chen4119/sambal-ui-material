@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = ({ url, header }) => {
     const classes = useStyles();
-    const nav = header.hasPart ? getEntitiesByType(header.hasPart, "sitenavigationelement") : [];
+    const nav = getEntitiesByType(header.hasPart, "sitenavigationelement");
     return (
         <Fragment>
             <Toolbar className={classes.toolbar}>

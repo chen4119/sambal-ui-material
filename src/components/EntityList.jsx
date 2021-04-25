@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Summary from "./Summary";
+import { isSchemaType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
     list: {
@@ -13,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getEntities(mainEntity) {
-    if (mainEntity["@type"].toLowerCase() === "listitem") {
+    if (isSchemaType(mainEntity, "listitem")) {
         return getEntities(mainEntity.item);
     }
-    if (mainEntity["@type"].toLowerCase() === "itemlist") {
+    if (isSchemaType(mainEntity, "itemlist")) {
         return Array.isArray(mainEntity.itemListElement) ?
             mainEntity.itemListElement :
             [mainEntity.itemListElement];
