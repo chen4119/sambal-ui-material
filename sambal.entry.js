@@ -6,7 +6,7 @@ import MainContent from "./src/components/MainContent";
 import { template } from "sambal";
 const theme = createMuiTheme();
 
-export function renderPage({ page, siteGraph, options }) {
+export function renderPage({ page, options }) {
     const { mainEntity } = page;
     const sheets = new ServerStyleSheets();
     const bodyHtml = ReactDOMServer.renderToString(

@@ -1,29 +1,57 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Link from "@material-ui/core/Link";
 import { isSchemaType } from "sambal";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex"
-    }
-}));
-
-const NavList = ({ url, mainEntity }) => {
-    const classes = useStyles();
-    let name;
-    let navList = [];
-    if (Array.isArray(mainEntity)) {
-        navList = mainEntity;
-    } else if (isSchemaType(mainEntity, "itemlist", false)) {
-        name = mainEntity.name;
-        navList = mainEntity.itemListElement;
-    }
+const NavElement = ({ url, nav }) => {
     return (
-        <List dense>
+        <ListItem
+            button={nav.url !== url}
+            selected={nav.url === url}
+        >
+            <ListItemText
+                disableTypography
+                primary={
+                    <Link
+                        variant="button"
+                        color="textPrimary" 
+                        href={nav.url}>
+                        {nav.name}
+                    </Link>
+                }
+            />
+        </ListItem>
+    );
+};
+
+const NavList = ({ url, name, navList }) => {
+    if (!Array.isArray(navList)) {
+        return null;
+    }
+    const navElements = [];
+    for (const nav of navList) {
+        if (isSchemaType(nav, "sitenavigationelement", false)) {
+            navElements.push(
+                <NavElement 
+                    nav={nav}
+                    url={url}
+                />
+            );
+        } else if (isSchemaType(nav, "itemlist", false)) {
+            navElements.push(
+                <NavList
+                    name={nav.name}
+                    navList={nav.itemListElement}
+                    url={url}
+                />
+            );
+        }
+    }
+
+    return (
+        <List dense disablePadding>
             {name &&
              <ListItem>
                 <ListItemText
@@ -33,25 +61,7 @@ const NavList = ({ url, mainEntity }) => {
                     }}
                 />
             </ListItem>}
-            {navList.map(nav => (
-                <ListItem
-                    key={nav.name}
-                    button={nav.url !== url}
-                    selected={nav.url === url}
-                >
-                    <ListItemText
-                        disableTypography
-                        primary={
-                            <Link
-                                variant="button"
-                                color="textPrimary" 
-                                href={nav.url}>
-                                {nav.name}
-                            </Link>
-                        }
-                    />
-                </ListItem>
-            ))}
+            {navElements}
         </List>
     );
 };

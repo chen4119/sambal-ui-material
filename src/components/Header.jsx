@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
+import IconButton from "@material-ui/core/IconButton";
+import GitHubIcon from "@material-ui/icons/GitHub";
 import { getEntitiesByType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,10 +21,29 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const Action = ({ action }) => {
+    if (!action.target) {
+        return null;
+    }
+    if (action.name) {
+        return (
+            <Button href={action.target} color="inherit">
+                {action.name}
+            </Button>
+        );
+    } else {
+        return (
+            <IconButton href={action.target} color="inherit">
+                <GitHubIcon />
+            </IconButton>
+        );
+    }
+};
 
 const Header = ({ url, header }) => {
     const classes = useStyles();
     const nav = getEntitiesByType(header.hasPart, "sitenavigationelement");
+    const actions = getEntitiesByType(header.potentialAction, "action");
     return (
         <Fragment>
             <Toolbar className={classes.toolbar}>
@@ -58,6 +79,10 @@ const Header = ({ url, header }) => {
                             </Fragment>    
                         ))}
                     </nav>}
+                {actions.length > 0 && 
+                    actions.map(action => (
+                        <Action key={action.target} action={action} />
+                    ))}
             </Toolbar>
         </Fragment>
     );

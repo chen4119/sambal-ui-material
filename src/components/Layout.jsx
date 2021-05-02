@@ -4,49 +4,51 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./Header";
 import NavList from "./NavList";
-import { getEntityByType } from "sambal";
-
-const sideBarWidth = 240;
+import { getEntityByType, isSchemaType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: "flex"
-        // marginTop: 64
-        // height: "calc(100vh - 64px)"
-    },
     main: {
-      margin: 50
+      marginLeft: 25,
+      marginRight: 25,
+      marginBottom: 50,
+      marginTop: 25
     },
     sidebar: {
-        width: sideBarWidth,
-        flexShrink: 0,
-        padding: theme.spacing(2)
+        position: "fixed",
+        left: 10,
+        display: "none",
+        [theme.breakpoints.up("lg")]: {
+            display: "block",
+            width: 220
+        }
     },
-    content: {
-        flexGrow: 1,
-        // backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(2)
+    topMenu: {
+        display: "none",
+        [theme.breakpoints.down("md")]: {
+            display: "block"
+        }
     }
 }));
 
 const SideBarLayout = ({ url, sidebar, children }) => {
     const classes = useStyles();
-    const sideBarElements = [];
-    for (const part of sidebar.hasPart) {
-        sideBarElements.push(
-            <NavList mainEntity={part} url={url} />
-        );
-    }
     return (
         <Fragment>
-            <div className={classes.root}>
-                <div className={classes.sidebar}>
-                    {sideBarElements}
-                </div>
-                <main className={classes.content}>
-                    {children}
-                </main>
+            <div className={classes.sidebar}>
+                <NavList
+                    url={url}
+                    navList={sidebar.hasPart}
+                />
             </div>
+            <main className={classes.main}>
+                <div className={classes.topMenu}>
+                    <NavList
+                        url={url}
+                        navList={sidebar.hasPart}
+                    />
+                </div>
+                {children}
+            </main>
         </Fragment>
     );
 };
@@ -58,7 +60,7 @@ const Layout = ({ page, children }) => {
     return (
         <Fragment>
             <CssBaseline />
-            <Container maxWidth="lg">
+            <Container maxWidth={sidebar ? "md" : "lg"}>
                 {header && 
                     <Header
                         url={page.url}
