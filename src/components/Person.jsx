@@ -2,10 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import SemanticButton from "./common/SemanticButton";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     container: {
       textAlign: "center"
     }
@@ -21,9 +20,13 @@ const Person = ({ mainEntity }) => {
             <Typography align="center" variant="h5" color="inherit" paragraph>
                 {mainEntity.description}
             </Typography>
-            <IconButton>
-                <LinkedInIcon fontSize="large"/>
-            </IconButton>
+            {Array.isArray(mainEntity.sameAs) && mainEntity.sameAs.map(url => (
+                <SemanticButton
+                    url={url}
+                    href={url}
+                    color="inherit"
+                />
+            ))}
         </Container>
     );
 }
