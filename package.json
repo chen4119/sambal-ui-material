@@ -33,7 +33,7 @@
         "luxon": "1.26.0",
         "markdown-to-jsx": "7.1.2",
         "prismjs": "1.23.0",
-        "sambal": "0.0.42"
+        "sambal": "0.0.50"
     },
     "devDependencies": {
         "babel-jest": "26.6.3",
