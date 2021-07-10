@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-// import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
+import { getEntityByType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -25,15 +26,16 @@ function mapEntityToLandingSchema(mainEntity) {
     return {
         headline: mainEntity.headline,
         description: mainEntity.alternativeHeadline,
-        features: mainEntity.usageInfo.map(d => ({
+        features: mainEntity.usageInfo ? mainEntity.usageInfo.map(d => ({
             headline: d.headline,
             description: d.alternativeHeadline
-        }))
+        })) : []
     }
 }
 const Landing = ({ mainEntity }) => {
     const classes = useStyles();
-    const landingSchema = mapEntityToLandingSchema(mainEntity);
+    const [ landingSchema ] = useState(mapEntityToLandingSchema(mainEntity))
+    const [ callToAction ] = useState(getEntityByType(mainEntity.potentialAction, "Action"));
     return (
         <Container maxWidth="md" className={classes.container}>
             <div className={classes.header}>
@@ -43,6 +45,14 @@ const Landing = ({ mainEntity }) => {
                 <Typography align="center" variant="h5" color="inherit" paragraph>
                     {landingSchema.description}
                 </Typography>
+                {callToAction &&
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        href={callToAction.target}
+                    >
+                        {callToAction.name}
+                    </Button>}
             </div>
             {landingSchema.features.map(feature => (
                 <div className={classes.feature} key={feature.headline}>

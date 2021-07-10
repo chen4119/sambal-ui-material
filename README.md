@@ -14,7 +14,6 @@ npm install
 npm run theme  // build project into /dist
 
 cd ..
-
 ```
 
 Add theme config to your sambal.site.js
@@ -25,6 +24,7 @@ export const siteConfig = {
     theme: {
         name: "sambal-ui-material",
         options: {
+            landingPage: false,                    // Render "/" as a landing page
             googleAnalyticsId: "<analytics ID>"
         }
     }

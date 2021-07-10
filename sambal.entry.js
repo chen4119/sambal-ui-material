@@ -2,7 +2,7 @@ import React from "react";
 const ReactDOMServer = require("react-dom/server");
 import { ServerStyleSheets, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Layout from "./src/components/common/Layout";
-import MainContent from "./src/components/MainContent";
+import SchemaType from "./src/components/SchemaType";
 import { template } from "sambal";
 const theme = createMuiTheme();
 
@@ -13,7 +13,7 @@ export function renderPage({ page, options }) {
         sheets.collect(
             <ThemeProvider theme={theme}>
                 <Layout page={page}>
-                    <MainContent
+                    <SchemaType
                         mainEntity={mainEntity}
                         isLanding={options.landingPage && page.url === "/"}
                     />    
@@ -33,6 +33,12 @@ export function renderPage({ page, options }) {
                 
                 <base href="/">
                 <script src="client"></script>
+                <style>
+                    pre[class*="language-"] {
+                        margin-top: 24px;
+                        margin-bottom: 24px;
+                    }
+                </style>
                 <style>
                     ${css}
                 </style>
@@ -59,7 +65,7 @@ function googleAnalytics(gid) {
 }
 
 export const defaultOptions = {
-    landingPage: true,
+    landingPage: false,
     googleAnalyticsId: null
 }
 

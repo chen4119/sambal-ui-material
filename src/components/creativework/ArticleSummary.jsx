@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { DateTime } from "luxon";
 
-const BlogSummary = ({ mainEntity }) => {
+const ArticleSummary = ({ mainEntity }) => {
     return (
         <Fragment>
             <Link href={mainEntity.mainEntityOfPage} variant="h4" color="primary">
@@ -16,4 +16,4 @@ const BlogSummary = ({ mainEntity }) => {
     );
 }
 
-export default BlogSummary;
+export default ArticleSummary;

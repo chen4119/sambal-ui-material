@@ -110,3 +110,5 @@ content/
 public/
 .sambal/
 sambal.site.js
+pages/
+data/
