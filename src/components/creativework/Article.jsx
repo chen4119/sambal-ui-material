@@ -1,8 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Content from "../common/Content";
 import Chip from "@material-ui/core/Chip";
+import Content from "../common/Content";
+import Image from "../common/Image";
 import { DateTime } from "luxon";
 import { toArrayOfString } from "../../util";
 
@@ -14,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 5,
         marginBottom: 5,
         marginRight: 5
+    },
+    img: {
+        marginTop: 15,
+        marginBottom: 15
     }
 }));
 
@@ -38,6 +43,8 @@ const Article = ({ mainEntity }) => {
                         <Chip className={classes.chip} label={tag} />
                     ))}
                 </div>}
+            {mainEntity.image &&
+                <Image className={classes.img} imageObj={mainEntity.image} />}
             <div className={classes.content}>
                 <Content
                     content={mainEntity.text}

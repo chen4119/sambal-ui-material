@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -43,8 +43,8 @@ const Action = ({ action }) => {
 
 const Header = ({ url, header }) => {
     const classes = useStyles();
-    const nav = getEntitiesByType(header.hasPart, "sitenavigationelement");
-    const actions = getEntitiesByType(header.potentialAction, "action");
+    const [ nav ] = useState(getEntitiesByType(header.hasPart, "sitenavigationelement"));
+    const [ actions ] = useState(getEntitiesByType(header.potentialAction, "action"));
     return (
         <Fragment>
             <Toolbar className={classes.toolbar}>

@@ -44,9 +44,10 @@ const Person = ({ mainEntity }) => {
             <Typography align="center" component="h1" variant="h3" color="inherit" gutterBottom>
                 {mainEntity.name}
             </Typography>
-            <Typography align="center" variant="h5" color="inherit" paragraph>
-                {mainEntity.description}
-            </Typography>
+            {mainEntity.description &&
+                <Typography align="center" variant="h5" color="inherit" paragraph>
+                    {mainEntity.description}
+                </Typography>}
             {sameAs.length > 0 &&
                 <div className={classes.links}>
                     {sameAs.map(url => (
