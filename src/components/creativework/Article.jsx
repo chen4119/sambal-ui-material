@@ -19,24 +19,24 @@ const useStyles = makeStyles((theme) => ({
     img: {
         marginTop: 15,
         marginBottom: 15,
-        maxHeight: 320
+        maxHeight: 600
     },
     '@media (max-width: 768px)': {
         img: {
-          height: 80
+            maxHeight: 150
         }
     },
     '@media (max-width: 992px)': {
         img: {
-          height: 120
+            maxHeight: 300
         }
     }
 }));
 
 const BREAKPOINTS = [
-    {screen: 768, image: 80},
-    {screen: 992, image: 120},
-    {screen: 1200, image: 320}
+    {screen: 768, image: 150},
+    {screen: 992, image: 300}
+    // {screen: 1200, image: 600}
 ];
 
 function getImageSizes(imageObj) {
@@ -55,7 +55,7 @@ function getImageSizes(imageObj) {
         }
     }
 
-    sizes.push("320px");
+    sizes.push("600px");
     return sizes.join(", ");
 }
 
