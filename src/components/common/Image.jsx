@@ -11,13 +11,6 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-/*  // max width
-const BREAKPOINTS = [
-    768,  // med devices
-    992,  // large devices
-    1200  // x-large devices
-];*/
-
 function getImageAttribs(imageObj) {
     const srcset = [];
     srcset.push(`${imageObj.contentUrl} ${imageObj.width}w`);
@@ -25,16 +18,17 @@ function getImageAttribs(imageObj) {
         srcset.push(`${thumbnail.contentUrl} ${thumbnail.width}w`);
     }
     return {
-        srcset: srcset.join(", ")
+        srcSet: srcset.join(", ")
     };
 }
-const Image = ({ className, imageObj }) => {
+const Image = ({ className, imageObj, imgSizes = null }) => {
     const classes = useStyles();
     return (
         <img
             className={clsx(classes.root, className)}
-            src={imageObj.contentUrl} 
+            src={imageObj.contentUrl}
             {...getImageAttribs(imageObj)}
+            sizes={imgSizes}
         />
     );
 }

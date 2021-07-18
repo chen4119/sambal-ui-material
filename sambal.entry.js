@@ -22,7 +22,6 @@ export function renderPage({ page, options }) {
         )
     );
     const css = sheets.toString();
-
     return template`
         <html>
             <head>

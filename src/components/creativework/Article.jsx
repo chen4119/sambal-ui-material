@@ -5,7 +5,7 @@ import Chip from "@material-ui/core/Chip";
 import Content from "../common/Content";
 import Image from "../common/Image";
 import { DateTime } from "luxon";
-import { toArrayOfString } from "../../util";
+import { toArrayOfString, toArrayOfObject } from "../../util";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -18,9 +18,46 @@ const useStyles = makeStyles((theme) => ({
     },
     img: {
         marginTop: 15,
-        marginBottom: 15
+        marginBottom: 15,
+        maxHeight: 320
+    },
+    '@media (max-width: 768px)': {
+        img: {
+          height: 80
+        }
+    },
+    '@media (max-width: 992px)': {
+        img: {
+          height: 120
+        }
     }
 }));
+
+const BREAKPOINTS = [
+    {screen: 768, image: 80},
+    {screen: 992, image: 120},
+    {screen: 1200, image: 320}
+];
+
+function getImageSizes(imageObj) {
+    const imageWidths = [+imageObj.width];
+    for (const thumbnail of toArrayOfObject(imageObj.thumbnail)) {
+        imageWidths.push(+thumbnail.width);
+    }
+    imageWidths.sort((a,b) => a - b);
+    const sizes = [];
+    for (const breakPoint of BREAKPOINTS) {
+        for (const width of imageWidths) {
+            if (width >= breakPoint.image) {
+                sizes.push(`(max-width: ${breakPoint.screen}px) ${width}px`);
+                break;
+            }
+        }
+    }
+
+    sizes.push("320px");
+    return sizes.join(", ");
+}
 
 const Article = ({ mainEntity }) => {
     const classes = useStyles();
@@ -44,7 +81,11 @@ const Article = ({ mainEntity }) => {
                     ))}
                 </div>}
             {mainEntity.image &&
-                <Image className={classes.img} imageObj={mainEntity.image} />}
+                <Image
+                    className={classes.img}
+                    imageObj={mainEntity.image}
+                    imgSizes={getImageSizes(mainEntity.image)}
+                />}
             <div className={classes.content}>
                 <Content
                     content={mainEntity.text}
