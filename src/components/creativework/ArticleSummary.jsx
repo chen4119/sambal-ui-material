@@ -6,7 +6,7 @@ import { DateTime } from "luxon";
 const ArticleSummary = ({ mainEntity }) => {
     return (
         <Fragment>
-            <Link href={mainEntity["@id"]} variant="h4" color="primary">
+            <Link href={mainEntity.url} variant="h4" color="primary">
                 {mainEntity.headline}
             </Link>
             <Typography variant="subtitle1" color="textSecondary" gutterBottom>

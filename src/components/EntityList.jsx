@@ -31,8 +31,8 @@ const EntityList = ({ mainEntity }) => {
 
     return (
         <ul className={classes.list}>
-            {entities.map(item => (
-                <li key={item["@id"]} className={classes.item}>
+            {entities.map((item, index) => (
+                <li key={index} className={classes.item}>
                     <Summary mainEntity={item} />
                 </li>
             ))}
