@@ -23,6 +23,7 @@ export function renderPage({ page, options }) {
     );
     const css = sheets.toString();
     return template`
+        <!DOCTYPE html>
         <html>
             <head>
                 <meta charset="UTF-8" />
