@@ -34,7 +34,7 @@
         "luxon": "1.26.0",
         "markdown-to-jsx": "7.1.2",
         "prismjs": "1.24.1",
-        "sambal": "0.0.56"
+        "sambal": "0.0.62"
     },
     "devDependencies": {
         "babel-jest": "26.6.3",

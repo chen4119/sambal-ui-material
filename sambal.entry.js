@@ -24,7 +24,7 @@ export function renderPage({ page, options }) {
     const css = sheets.toString();
     return template`
         <!DOCTYPE html>
-        <html>
+        <html lang="en-US">
             <head>
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -32,7 +32,7 @@ export function renderPage({ page, options }) {
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
                 
                 <base href="/">
-                <script src="client"></script>
+                <script defer src="client"></script>
                 <style>
                     pre[class*="language-"] {
                         margin-top: 24px;
