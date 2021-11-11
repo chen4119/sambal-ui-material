@@ -62,8 +62,9 @@ function getImageSizes(imageObj) {
 
 const Article = ({ mainEntity }) => {
     const classes = useStyles();
-    const pageImages = useState(getEntitiesByType(mainEntity.image, "ImageObject", false)
+    const [pageImages] = useState(getEntitiesByType(mainEntity.image, "ImageObject", false)
         .filter(img => img.representativeOfPage));
+
     return (
         <div>
             <Typography component="h1" variant="h4" color="inherit">
