@@ -3,6 +3,11 @@ import { withStyles } from "@material-ui/core/styles";
 import ReactMarkdown from "markdown-to-jsx";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import { TableRow } from "@material-ui/core";
 
 const styles = (theme) => ({
     listItem: {
@@ -57,6 +62,30 @@ const options = {
                     <Typography component="span" {...props} />
                 </li>
             ))
+        },
+        table: {
+            component: Table
+        },
+        thead: {
+            component: TableHead
+        },
+        tbody: {
+            component: TableBody
+        },
+        tr: {
+            component: TableRow
+        },
+        th: {
+            component: TableCell,
+            props: {
+                align: "left"
+            }
+        },
+        td: {
+            component: TableCell,
+            props: {
+                align: "left"
+            }
         }
     },
 };

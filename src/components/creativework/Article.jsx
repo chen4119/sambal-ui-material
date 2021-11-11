@@ -77,7 +77,7 @@ const Article = ({ mainEntity }) => {
             {mainEntity.keywords &&
                 <div>
                     {toArrayOfString(mainEntity.keywords).map(tag => (
-                        <Chip className={classes.chip} label={tag} />
+                        <Chip key={tag} className={classes.chip} label={tag} />
                     ))}
                 </div>}
             {mainEntity.image &&
