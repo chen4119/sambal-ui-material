@@ -12,6 +12,10 @@ import { TableRow } from "@material-ui/core";
 const styles = (theme) => ({
     listItem: {
         marginTop: theme.spacing(1),
+    },
+    table: {
+        marginTop: 16,
+        marginBottom: 16,
     }
 });
 
@@ -64,7 +68,11 @@ const options = {
             ))
         },
         table: {
-            component: Table
+            component: withStyles(styles)(({ classes, children }) => (
+                <Table className={classes.table} size="small">
+                    {children}
+                </Table>
+            ))
         },
         thead: {
             component: TableHead

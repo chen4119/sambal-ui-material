@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
@@ -6,6 +6,7 @@ import Content from "../common/Content";
 import Image from "../common/Image";
 import { DateTime } from "luxon";
 import { toArrayOfString, toArrayOfObject } from "../../util";
+import { getEntitiesByType } from "sambal";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -61,6 +62,8 @@ function getImageSizes(imageObj) {
 
 const Article = ({ mainEntity }) => {
     const classes = useStyles();
+    const pageImages = useState(getEntitiesByType(mainEntity.image, "ImageObject", false)
+        .filter(img => img.representativeOfPage));
     return (
         <div>
             <Typography component="h1" variant="h4" color="inherit">
@@ -80,11 +83,11 @@ const Article = ({ mainEntity }) => {
                         <Chip key={tag} className={classes.chip} label={tag} />
                     ))}
                 </div>}
-            {mainEntity.image &&
+            {pageImages.length > 0 && 
                 <Image
                     className={classes.img}
-                    imageObj={mainEntity.image}
-                    imgSizes={getImageSizes(mainEntity.image)}
+                    imageObj={pageImages[0]}
+                    imgSizes={getImageSizes(pageImages[0])}
                 />}
             <div className={classes.content}>
                 <Content

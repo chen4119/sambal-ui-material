@@ -18,7 +18,8 @@ function getImageAttribs(imageObj) {
         srcset.push(`${thumbnail.contentUrl} ${thumbnail.width}w`);
     }
     return {
-        srcSet: srcset.join(", ")
+        srcSet: srcset.join(", "),
+        alt: imageObj.name
     };
 }
 const Image = ({ className, imageObj, imgSizes = null }) => {
