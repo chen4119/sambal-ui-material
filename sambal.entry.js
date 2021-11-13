@@ -31,7 +31,7 @@ export function renderPage({ page, options }) {
                 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
                 
                 <base href="/">
-                <script defer src="client"></script>
+                <script src="immediate"></script>
                 <style>
                     pre[class*="language-"] {
                         margin-top: 24px;
@@ -45,6 +45,7 @@ export function renderPage({ page, options }) {
             </head>
             <body>
                 ${bodyHtml}
+                <script defer src="defer"></script>
             </body>
         </html>
     `;
@@ -70,6 +71,7 @@ export const defaultOptions = {
 
 export const browserBundle = {
     entry: {
-        client: "./src/client.js"
+        immediate: "./src/immediate.js",
+        defer: "./src/defer.js"
     }
 };
