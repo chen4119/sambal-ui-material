@@ -1,6 +1,6 @@
 # sambal-ui-material
 
-A [Sambal](https://www.sambal.dev) theme built with React and [Material-UI](https://material-ui.com)
+A [Sambal](https://sambal.dev) theme built with React and [Material-UI](https://material-ui.com)
 
 To use sambal-ui-material theme for your Sambal project, do the following in your root project folder
 
