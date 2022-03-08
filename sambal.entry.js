@@ -29,9 +29,9 @@ export function renderPage({ page, options }) {
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
                 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-                
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+                <link rel="stylesheet" href="/node_modules/prismjs/themes/prism-tomorrow.css">
                 <base href="/">
-                <script src="immediate"></script>
                 <style>
                     pre[class*="language-"] {
                         margin-top: 24px;
@@ -45,7 +45,7 @@ export function renderPage({ page, options }) {
             </head>
             <body>
                 ${bodyHtml}
-                <script defer src="defer"></script>
+                <script defer src="/src/defer"></script>
             </body>
         </html>
     `;
@@ -68,10 +68,3 @@ export const defaultOptions = {
     landingPage: false,
     googleAnalyticsId: null
 }
-
-export const browserBundle = {
-    entry: {
-        immediate: "./src/immediate.js",
-        defer: "./src/defer.js"
-    }
-};
