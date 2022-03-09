@@ -30,7 +30,7 @@ export function renderPage({ page, options }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
                 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-                <link rel="stylesheet" href="/node_modules/prismjs/themes/prism-tomorrow.css">
+                <link rel="stylesheet" href="node_modules/prismjs/themes/prism-tomorrow.css">
                 <base href="/">
                 <style>
                     pre[class*="language-"] {
