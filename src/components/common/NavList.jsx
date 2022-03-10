@@ -34,7 +34,8 @@ const NavList = ({ url, name, navList }) => {
     for (const nav of navList) {
         if (isSchemaType(nav, "sitenavigationelement", false)) {
             navElements.push(
-                <NavElement 
+                <NavElement
+                    key={url}
                     nav={nav}
                     url={url}
                 />
@@ -42,6 +43,7 @@ const NavList = ({ url, name, navList }) => {
         } else if (isSchemaType(nav, "itemlist", false)) {
             navElements.push(
                 <NavList
+                    key={nav.name}
                     name={nav.name}
                     navList={nav.itemListElement}
                     url={url}

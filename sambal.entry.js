@@ -31,7 +31,7 @@ export function renderPage({ page, options }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
                 <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
                 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-                <link rel="stylesheet" type="text/css" href="/node_modules/prismjs/themes/prism-tomorrow.css">
+                <link rel="stylesheet" type="text/css" href="/css/prism-tomorrow.min.css">
                 <style>
                     pre[class*="language-"] {
                         margin-top: 24px;
